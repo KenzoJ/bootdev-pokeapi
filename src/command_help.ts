@@ -1,15 +1,11 @@
-import { getCommands, CLICommand } from "./registry.js"
-import { commandExit } from "./command_exit.js"
+import type { State } from "./state.js";
 
-export function commandHelp(commands: Record<string, CLICommand>) {
+export function commandHelp(state: State) {
   console.log(`Welcome to the Pokedex!`);
   console.log("Usage:\n");
-  //is an object
-  const allCommands = getCommands();
+  const allCommands = state.commands;
   for (const key in allCommands) {
     console.log(`${key}: ${allCommands[key].description}`);
   }
-  //to get the first you need
-  // allCommands[name].name
 
 }
