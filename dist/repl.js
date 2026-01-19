@@ -1,9 +1,10 @@
 export function startREPL(state) {
     state.readline.prompt();
-    state.readline.on('line', (line) => {
-        if (line in state.commands) {
+    state.readline.on('line', (input) => {
+        let line = cleanInput(input);
+        if (line[0] in state.commands) {
             //input[line].callback(input)
-            state.commands[line].callback(state);
+            state.commands[line[0]].callback(state);
             state.readline.prompt();
         }
         else {
