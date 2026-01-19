@@ -16,6 +16,7 @@ export function startREPL(): void {
     const input = getCommands();
     if (line in input) {
       input[line].callback(input)
+      rl.prompt();
     } else {
       console.log("Unknown command");
       rl.prompt();
