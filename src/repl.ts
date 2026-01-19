@@ -1,5 +1,6 @@
-import { stdin, stdout} from "node:process";
+import { stdin, stdout, exit} from "node:process";
 import { createInterface } from "node:readline"
+import { getCommands } from "./registry.js"
 
 export function startREPL(): void {
 
@@ -12,12 +13,15 @@ export function startREPL(): void {
   rl.prompt();
 
   rl.on('line', (line: string) => {
-    let inputArray: string[] = cleanInput(line)
-    if (inputArray.length === 0) {
-      rl.prompt()
-    };
-    console.log(`Your command was: ${inputArray[0]}`);
-    rl.prompt();
+    const input = getCommands();
+    if (line in input) {
+      input[line].callback(input)
+    } else {
+      console.log("Unknown command");
+      rl.prompt();
+    }
+
+    
   });
 
 
@@ -26,3 +30,4 @@ export function startREPL(): void {
 export function cleanInput(input: string): string[] {
   return input.toLowerCase().trim().split(/\s+/); 
 }
+
