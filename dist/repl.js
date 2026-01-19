@@ -8,7 +8,15 @@ export function startREPL() {
     });
     rl.prompt();
     rl.on('line', (line) => {
-        console.log(`received: ${line}`);
+        let inputArray = cleanInput(line);
+        if (inputArray.length === 0) {
+            rl.prompt();
+        }
+        ;
+        console.log(`Your command was: ${inputArray[0]}`);
         rl.prompt();
     });
+}
+export function cleanInput(input) {
+    return input.toLowerCase().trim().split(/\s+/);
 }

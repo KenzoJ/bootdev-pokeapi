@@ -12,9 +12,17 @@ export function startREPL(): void {
   rl.prompt();
 
   rl.on('line', (line: string) => {
-    console.log(`received: ${line}`);
+    let inputArray: string[] = cleanInput(line)
+    if (inputArray.length === 0) {
+      rl.prompt()
+    };
+    console.log(`Your command was: ${inputArray[0]}`);
     rl.prompt();
   });
 
 
+}
+
+export function cleanInput(input: string): string[] {
+  return input.toLowerCase().trim().split(/\s+/); 
 }
