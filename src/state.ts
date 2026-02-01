@@ -11,6 +11,9 @@ export type CLICommand = {
 export type State = {
   readline: Interface;
   commands: Record<string, CLICommand>; 
+  //PokeAPI_Obj: PokeAPI;
+  //nextLocationsURL: string;
+  //prevLocationsURL: string;
 }
 
 export function initState(): State {
