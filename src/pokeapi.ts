@@ -25,8 +25,8 @@ export class PokeAPI {
 
 export type ShallowLocations = {
   count: number
-  next: string | null;
-  previous: string | null;
+  next: string | undefined;
+  previous: string | undefined;
   results: Location[]
 };
 

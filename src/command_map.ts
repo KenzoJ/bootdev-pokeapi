@@ -1,5 +1,14 @@
 import type { State } from "./state.js";
+import { PokeAPI } from "./pokeapi.js";
 
-export function commandMap(state: State) {
-  console.log(`Welcome to the Pokedex!`);
+
+export async function commandMap(state: State) {
+  const listLocations = (await state.PokeAPI_Obj.fetchLocations(state.nextLocationsURL))
+  state.prevLocationsURL = listLocations.previous;
+  state.nextLocationsURL = listLocations.next;
+  let results = listLocations.results;
+  for (let i = 0; i <20; i++) { 
+    console.log(results[i].name)
+  }
+  
 }

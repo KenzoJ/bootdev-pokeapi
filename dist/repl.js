@@ -1,9 +1,9 @@
-export function startREPL(state) {
+export async function startREPL(state) {
     state.readline.prompt();
-    state.readline.on('line', (input) => {
+    state.readline.on('line', async (input) => {
         let line = cleanInput(input);
         if (line[0] in state.commands) {
-            state.commands[line[0]].callback(state);
+            await state.commands[line[0]].callback(state);
             state.readline.prompt();
         }
         else {

@@ -27,5 +27,4 @@ describe('PokeAPI tests', () => {
       const data = await fetchLocationsTest();
       expect(data.count).toBeGreaterThan(10)
     });
-
 })
