@@ -17,10 +17,6 @@ export class PokeAPI {
         throw error;
       }
    }
-
-  //async fetchLocation(locationName: string): Promise<Location> {
-    // implement this
-  //}
 }
 
 export type ShallowLocations = {

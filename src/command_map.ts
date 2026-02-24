@@ -12,3 +12,17 @@ export async function commandMap(state: State) {
   }
   
 }
+export async function commandMapBack(state: State) {
+  const listLocations = (await state.PokeAPI_Obj.fetchLocations(state.prevLocationsURL))
+  state.prevLocationsURL = listLocations.previous;
+  state.nextLocationsURL = listLocations.next;
+  
+  console.log(`prevlocationsURL: ${state.prevLocationsURL}\n`)
+  console.log(`nextlocationsURL: ${state.nextLocationsURL}\n`)
+
+  let results = listLocations.results;
+  for (let i = 0; i <20; i++) { 
+    console.log(results[i].name)
+  }
+  
+}

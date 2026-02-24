@@ -22,9 +22,11 @@ async function fetchLocationsTest(pageURL?: string) {
   return locations.fetchLocations(pageURL);
 }
 
-describe('PokeAPI tests', () => {
+
+  describe('PokeAPI tests', () => {
     test('PokeAPI fetches location JSON', async () => {
       const data = await fetchLocationsTest();
       expect(data.count).toBeGreaterThan(10)
     });
 })
+
