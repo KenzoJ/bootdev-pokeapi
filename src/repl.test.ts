@@ -1,5 +1,5 @@
-import { startREPL } from "./repl.js";
-import { describe, expect, test} from "vitest";
+//import { startREPL } from "./repl.js";
+import { describe, expect, test } from "vitest";
 import { PokeAPI } from "./pokeapi.js";
 
 /* describe.each([
@@ -18,15 +18,13 @@ import { PokeAPI } from "./pokeapi.js";
 }); */
 
 async function fetchLocationsTest(pageURL?: string) {
-  let locations = new PokeAPI();
+  let locations = new PokeAPI(500);
   return locations.fetchLocations(pageURL);
 }
 
-
-  describe('PokeAPI tests', () => {
-    test('PokeAPI fetches location JSON', async () => {
-      const data = await fetchLocationsTest();
-      expect(data.count).toBeGreaterThan(10)
-    });
-})
-
+describe("PokeAPI tests", () => {
+  test("PokeAPI fetches location JSON", async () => {
+    const data = await fetchLocationsTest();
+    expect(data.count).toBeGreaterThan(10);
+  });
+});
