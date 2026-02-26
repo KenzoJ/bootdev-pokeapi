@@ -17,9 +17,6 @@ export async function commandMapBack(state: State) {
   state.prevLocationsURL = listLocations.previous;
   state.nextLocationsURL = listLocations.next;
   
-  console.log(`prevlocationsURL: ${state.prevLocationsURL}\n`)
-  console.log(`nextlocationsURL: ${state.nextLocationsURL}\n`)
-
   let results = listLocations.results;
   for (let i = 0; i <20; i++) { 
     console.log(results[i].name)
