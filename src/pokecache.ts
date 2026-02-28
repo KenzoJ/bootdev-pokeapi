@@ -9,7 +9,12 @@ export class Cache {
   #reapIntervalId: NodeJS.Timeout | undefined = undefined;
   #interval: number;
 
-  add<T>(key: string, val: T) {
+  constructor(tempNumber: number) {
+    this.#interval = tempNumber;
+    this.#startReapLoop()
+  }
+
+  add<T>(key: string, val: T): void{
     let tempEntry:CacheEntry<T> = { createdAt: Date.now(), val}
     this.#cache.set(key, tempEntry)
   }
