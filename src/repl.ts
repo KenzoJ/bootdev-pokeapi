@@ -5,7 +5,11 @@ export async function startREPL(state: State): Promise<void> {
   state.readline.on('line', async (input: string) => {
     let line = cleanInput(input)
     if (line[0] in state.commands) {
-      await state.commands[line[0]].callback(state)
+      try {
+        await state.commands[line[0]].callback(state, ...line.slice(1))
+      } catch (e) {
+        console.log((e as Error).message);
+      }
       state.readline.prompt();
     } else {
       console.log("Unknown command");
@@ -15,6 +19,5 @@ export async function startREPL(state: State): Promise<void> {
 }
 
 export function cleanInput(input: string): string[] {
-  return input.toLowerCase().trim().split(/\s+/); 
+  return input.toLowerCase().trim().split(/\s+/);
 }
-
