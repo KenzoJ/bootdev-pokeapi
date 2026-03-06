@@ -23,11 +23,10 @@ export async function commandInspect(state: State, ...args: string[]) {
     -special-defense: ${mons.stats[4].base_stat}
     -Speed: ${mons.stats[5].base_stat}
   Types:
-    -${mons.types[0].type.name}
-`)
+    -${mons.types[0].type.name}`)
   const secondType = mons.types[1]?.type.name;
   if (secondType) {
-    console.log(`-${secondType}\n`);
+    console.log(`  -${secondType}\n`);
   }
 
 
